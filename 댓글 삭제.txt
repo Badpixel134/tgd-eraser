@@ -1,0 +1,22 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from time import sleep
+
+options = webdriver.ChromeOptions()
+options.add_argument('window-size=1920,1080')
+
+driver = webdriver.Chrome('chromedriver', options=options)
+driver.implicitly_wait(5)
+
+
+for i in range(1, 1100):
+	driver.get(url='https://tgd.kr/member/mylist/comment')
+	search_box = driver.find_element_by_xpath('//*[@id="main-content"]/div/div[1]/table/tbody/tr[1]/td[1]/a')
+	search_box.click()
+	sleep(3)
+	delete = driver.find_element_by_link_text('삭제')
+	delete.click()
+	sleep(3)
+	confirm = driver.find_element_by_xpath(' //*[@id="main-content"]/div/form/div/button')
+	confirm.click()
+	sleep(3)
